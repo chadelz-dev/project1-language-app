@@ -1,0 +1,211 @@
+/* setting box size to border box for all different elements */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+  --hue-neutral: 200;
+  --hue-wrong: 0;
+  --hue-correct: 145;
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* the body or background */
+
+body {
+  --hue: var(--hue-neutral);
+  padding: 0;
+  margin: 0;
+  display: flex; /* makes centering our containers possible  */
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(
+    var(--hue),
+    100%,
+    20%
+  ); /* 100% saturation and 20% lightness */
+
+  transition: 0.3s;
+}
+
+body.correct {
+  --hue: var(--hue-correct);
+  transition: 0.3s;
+}
+
+body.wrong {
+  --hue: var(--hue-wrong);
+  transition: 0.3s;
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+h1 {
+  position: relative;
+  color: rgb(255, 249, 197);
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid rgb(255, 249, 197);
+  margin-bottom: 1rem;
+  pointer-events: none;
+}
+
+h2 {
+  position: relative;
+  color: rgb(255, 249, 197);
+  font-size: 1.25rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin-bottom: 3rem;
+
+  pointer-events: none;
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* progress bar */
+
+#progressContainer {
+  /* background-color: green; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+
+  pointer-events: none;
+}
+
+.progressBar {
+  width: 20vw;
+  height: 15px;
+  border: 0.2rem solid rgb(255, 249, 197);
+  border-radius: 20px;
+}
+
+#progressBarFull {
+  height: 11px;
+  background-color: rgb(255, 249, 197);
+  width: 0%;
+}
+
+.progressText {
+  color: rgb(255, 249, 197);
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* the container for our quiz questions and answers */
+
+.container {
+  width: 66vw;
+  max-width: 80%;
+  background-color: #fff9c5;
+  border-radius: 11px;
+  padding: 33px;
+  box-shadow: 0 0 15px 2px;
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* answers grid (.btn-grid is the class we applied to them */
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    auto
+  ); /* repeat(2, auto) will make 2 columns as wide as they can be */
+  gap: 22px;
+  margin: 30px 0;
+}
+/* repeat(2, auto) will make 2 columns as wide as they can be */
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* Generic Button Class (applied to all buttons on the page */
+
+.btn {
+  --hue: var(--hue-neutral);
+  border: 1px solid hsl(var(--hue), 100%, 10%);
+  background-color: hsl(var(--hue), 100%, 25%);
+  border-radius: 11px;
+  padding: 8px 10px;
+  color: rgb(255, 249, 197);
+  outline: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: black;
+  scale: 1.005;
+}
+
+.btn.correct {
+  --hue: var(--hue-correct);
+}
+
+.btn.wrong {
+  --hue: var(--hue-wrong);
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* next and start buttons */
+
+.start-btn,
+.next-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+/*  ////////////////////////////////////////////////////////////  */
+/*  ////////////////////////////////////////////////////////////  */
+
+/* controls */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hiding the controls */
+
+.hide {
+  display: none;
+}
+
+/* only 1 answer button per line for mobile devices */
+
+@media (max-width: 768px) {
+  /* heading font */
+  h1 {
+    font-size: 25px;
+
+    border-bottom: 2px solid rgb(255, 249, 197);
+  }
+
+  /* button grid layout */
+  .btn-grid {
+    grid-template-columns: repeat(1, auto);
+  }
+}
